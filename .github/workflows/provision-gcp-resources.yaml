@@ -19,5 +19,11 @@ jobs:
         gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
         gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
 
-    - name: Echo Trial Task
-      run: echo "RNS.ID Trial Task"
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Plan Terraform Deployment
+      run: terraform plan
+
+    # - name: Apply Terraform Deployment
+    #   run: terraform apply -auto-approve

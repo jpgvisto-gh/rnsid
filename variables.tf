@@ -5,7 +5,3 @@ variable "region" {
 variable "zone" {
   default = "us-east1-a"
 }
-
-variable "gcp_key" {
-  default = "$HOME/gcp-key.json"
-}

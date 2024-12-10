@@ -24,5 +24,6 @@ jobs:
     - name: Plan Terraform Deployment
       run: terraform plan
 
+
     # - name: Apply Terraform Deployment
     #   run: terraform apply -auto-approve

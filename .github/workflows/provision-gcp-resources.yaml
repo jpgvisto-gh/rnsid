@@ -17,12 +17,6 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    # - name: Authenticate to GCP
-    #   run: |
-    #     echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | base64 --decode > $HOME/gcp-key.json
-    #     gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
-    #     export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json
-
     - name: Initialize Terraform
       run: terraform init
       env:

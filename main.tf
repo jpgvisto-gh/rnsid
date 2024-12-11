@@ -43,7 +43,6 @@ resource "google_compute_network_endpoint_group" "default" {
   name                  = "cloud-run-neg"
   network               = "default"
   network_endpoint_type = "SERVERLESS"
-  zone                   var.zone
 }
 
 resource "google_compute_backend_service" "default" {

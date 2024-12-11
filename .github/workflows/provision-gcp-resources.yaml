@@ -27,6 +27,7 @@ jobs:
       run: terraform plan
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_GOOGLE_CREDENTIALS }}
+        TF_LOG: DEBUG
 
     # - name: Apply Terraform Deployment
     #   run: terraform apply -auto-approve

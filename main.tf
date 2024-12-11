@@ -34,17 +34,22 @@ resource "google_cloud_run_service" "default" {
   }
 
   traffic {
-    percent     = 100
-    revision_name = google_cloud_run_service.default.latest_revision.name
+    percent         = 100
+    latest_revision = true
   }
 }
 
+resource "google_compute_network_endpoint_group" "default" {
+  name                  = "cloud-run-neg"
+  network               = "default"
+  network_endpoint_type = "SERVERLESS"
+}
+
 resource "google_compute_backend_service" "default" {
-  name        = "rnsid-visto-backend-service"
-  protocol    = "HTTP"
-  port_name   = "http"
+  name     = "rnsid-visto-backend-service"
+  protocol = "HTTP"
   backend {
-    group = google_compute_instance_group_manager.default.instance_group
+    group = google_compute_network_endpoint_group.default.id
   }
 }
 

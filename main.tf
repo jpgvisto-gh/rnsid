@@ -42,7 +42,7 @@ resource "google_cloud_run_service" "default" {
 }
 
 ############### LOAD BALANCER ###############
-resource "google_compute_region_network_endpoint_group" "example" {
+resource "google_compute_region_network_endpoint_group" "default" {
   name                  = "rnsid-visto-cloud-run-region-neg"
   network_endpoint_type = "SERVERLESS"
   region                = var.region

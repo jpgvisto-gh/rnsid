@@ -38,14 +38,10 @@ resource "google_cloud_run_service" "default" {
     latest_revision = true
   }
 }
-resource "google_compute_network" "default" {
-  name                    = "custom-vpc-network"
-  auto_create_subnetworks  = true
-}
 
 resource "google_compute_network_endpoint_group" "default" {
   name                  = "cloud-run-neg"
-  network               = google_compute_network.default.id
+  network               = "default"
   network_endpoint_type = "SERVERLESS"
 }
 

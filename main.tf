@@ -8,7 +8,7 @@ resource "google_sql_database_instance" "default" {
   name = "rnsid-visto-db-instance"
   region = var.region
 
-  database_version = "rnsid-vistoSQL_5_7"
+  database_version = "MYSQL_5_7"
   root_password    = "examplepassword"
 
   settings {

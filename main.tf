@@ -3,6 +3,7 @@ provider "google" {
   region      = var.region
 }
 
+############### DATABASE ###############
 resource "google_sql_database_instance" "default" {
   name = "rnsid-visto-db-instance"
   region = var.region
@@ -21,6 +22,7 @@ resource "google_sql_database" "default" {
   instance = google_sql_database_instance.default.name
 }
 
+############### CLOUD RUN ###############
 resource "google_cloud_run_service" "default" {
   name     = "rnsid-visto-cloud-run-service"
   location = var.region
@@ -39,8 +41,9 @@ resource "google_cloud_run_service" "default" {
   }
 }
 
+############### LOAD BALANCER ###############
 resource "google_compute_network_endpoint_group" "default" {
-  name                  = "cloud-run-neg"
+  name                  = "rnsid-visto-cloud-run-neg"
   network               = "default"
   network_endpoint_type = "SERVERLESS"
   zone                  = var.zone

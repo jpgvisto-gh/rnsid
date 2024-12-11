@@ -27,6 +27,7 @@ jobs:
       run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_GOOGLE_CREDENTIALS }}
+        TF_LOG: DEBUG
 
     - name: Plan Terraform Deployment
       run: terraform plan

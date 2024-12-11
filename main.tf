@@ -42,18 +42,20 @@ resource "google_cloud_run_service" "default" {
 }
 
 ############### LOAD BALANCER ###############
-resource "google_compute_network_endpoint_group" "default" {
-  name                  = "rnsid-visto-cloud-run-neg"
-  network               = "default"
+resource "google_compute_region_network_endpoint_group" "example" {
+  name                  = "rnsid-visto-cloud-run-region-neg"
   network_endpoint_type = "SERVERLESS"
-  zone                  = var.zone
+  region                = var.region
+  cloud_run {
+    service = google_cloud_run_service.default.name
+  }
 }
 
 resource "google_compute_backend_service" "default" {
   name     = "rnsid-visto-backend-service"
   protocol = "HTTP"
   backend {
-    group = google_compute_network_endpoint_group.default.id
+    group = google_compute_region_network_endpoint_group.default.id
   }
 }
 
